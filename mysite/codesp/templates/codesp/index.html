@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{% static 'assets/mascote.svg'%}"
+      alt="My image"
+      class="fill-textGray dark:fill-white-default"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title style="background-color: #33475b">Inicio</title>
+  </head>
+  <body class="bg-bgGray">
+    <div class="h-full w-screen flex">
+      <div class="h-full w-full flex flex-col lg:justify-between">
+        <div class="flex justify-center w-full mt-[50px]">
+          <nav class="">
+            <div class="max-w-6xl mx-auto px-4">
+              <div class="flex justify-between">
+                <div class="flex space-x-7 ease-in-out duration-300">
+                  <!-- Website Logo -->
+                  <div>
+                    <a href="#" class="flex items-center py-4 px-2">
+                      <img
+                        src="{% static 'assets/mascote.svg'%}"
+                        alt="Logo"
+                        class="h-8 w-8 mr-2"
+                      />
+                      <span class="text-green-200 font-semibold text-2xl"
+                        >SIG SPORTS</span
+                      >
+                    </a>
+                  </div>
+                  <!-- Primary Navbar items -->
+                  <div
+                    class="hidden text-white-default dropShadow-100 text-xl md:flex items-center space-x-1"
+                  >
+                    <a
+                      href=""
+                      class="py-4 px-2 font-semibold transition duration-300 hover:border-b-4 hover:border-green-500"
+                      >MODALIDADES</a
+                    >
+                    <a
+                      href=""
+                      class="py-4 px-2 font-semibold hover:border-b-4 hover:border-green-500 transition duration-300"
+                      >HORARIOS</a
+                    >
+                    <a
+                      href=""
+                      class="py-4 px-2 font-semibold hover:border-b-4 hover:border-green-500 transition duration-300"
+                      >EQUIPES</a
+                    >
+                  </div>
+                </div>
+                <!-- Secondary Navbar items -->
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                  <button class="outline-none mobile-menu-button">
+                    <svg
+                      class="w-6 h-6 text-green-100 hover:text-green-500"
+                      x-show="!showMenu"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- mobile menu -->
+            <div class="hidden mobile-menu flex">
+              <ul
+                class="absolute top-0 text-xl left-0 w-[80vw] h-screen bg-green-200 text-white-default"
+              >
+                <div class="flex py-4">
+                  <a
+                    href="#"
+                    class="text-white flex items-center space-x-2 px-4"
+                    title="Your App is cool"
+                  >
+                    <img src="{% static 'assets/mascote.svg'%}" alt="" />
+                    <span
+                      class="text-2xl font-extrabold whitespace-nowrap truncate"
+                      >SIG SPORTS</span
+                    >
+                  </a>
+                </div>
+                <li class="active">
+                  <a
+                    href="index.html"
+                    class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold"
+                    >MODALIDADES</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"
+                    >HORARIOS</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"
+                    >EQUIPES</a
+                  >
+                </li>
+              </ul>
+              <button class="outline-none mobile-menu-button1">
+                <svg
+                  class="w-10 h-10 text-white-default hover:text-green-500 absolute top-4 right-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+          </nav>
+        </div>
+        <div class="flex w-screen tablet:w-full justify-center items-center">
+          <div class="flex flex-col justify-around lg:p-0">
+            <div
+              class="flex flex-col text-green-300 font-semibold font-Raleway p-8 text-2xl leading-[50px]"
+            >
+              <h1>Para iniciar faça seu login</h1>
+              <h1>ou acesse nossos esportes disponíveis.</h1>
+            </div>
+
+            <div class="w-[321px] mx-auto px-8">
+              <img src="{% static 'assets/SIGSport.svg'%}" alt="" />
+              <div class="mt-12 text-white-default flex justify-around w-full">
+                <button
+                  onclick="window.location.href='/login'"
+                  class="w-[144px] font-bold text-base leading-5 mr-8 h-[57.6px] font-Montserrat border border-green-200 rounded-sm"
+                >
+                  LOGIN
+                </button>
+                <button
+                  class="w-[144px] h-[57.6px] bg-green-200 rounded-sm font-bold text-base leading-5 font-Montserrat"
+                >
+                  ESPORTES
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:w-2/4 w-0 flex flex-row-reverse flex-wrap justify-between invisible tablet:visible overflow-hidden"
+      >
+        <img
+          src="{% static 'assets/background.svg' %}"
+          alt=""
+          class="absolute h-full top-0 overflow-hidden"
+        />
+
+        <img
+          src="{% static 'assets/text.svg'%}"
+          alt=""
+          class="absolute h-full"
+        />
+
+        <div
+          class="absolute invisible tablet:visible flex items-center h-full justify-center flex-wrap"
+        >
+          <img src="{% static 'assets/women.svg'%}" alt="" class="h-full" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.querySelector("button.mobile-menu-button");
+      const btn1 = document.querySelector("button.mobile-menu-button1");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+      btn1.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bgGray: "#2D3A3A",
+              green: {
+                100: "#92E6A7",
+                200: "#058C42",
+                300: "#fcfffc80",
+              },
+              white: { ligth: "#FCFFFC80", default: "#FCFFFC" },
+              dropShadow: {
+                100: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              },
+            },
+            screens: {
+              tablet: "1320px",
+            },
+            fontFamily: {
+              Raleway: ["Raleway", "sans-serif"],
+              Montserrat: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </body>
+</html>

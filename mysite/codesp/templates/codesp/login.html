@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{% static 'assets/mascote.svg'%}"
+      alt="My image"
+      class="fill-textGray dark:fill-white-default"
+    />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="csrf_token"
+      content="nEAFrygmqLeqtMZugiuIIsymzgMtB1v8Q44D0NzbVQS9N8NdiMHzKt1m4v50GNJI"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-bgGray">
+    <div class="h-screen w-screen flex">
+      <div class="h-full w-full flex flex-col lg:justify-between">
+        <div class="flex justify-center w-full mt-[50px]">
+          <nav class="">
+            <div class="max-w-6xl mx-auto px-4">
+              <div class="flex justify-between">
+                <div class="flex space-x-7">
+                  <!-- Website Logo -->
+                  <div>
+                    <a href="/" class="flex items-center py-4 px-2">
+                      <img
+                        src="/static/assets/mascote.svg"
+                        alt="Logo"
+                        class="h-8 w-8 mr-2"
+                      />
+
+                      <span class="text-green-200 font-semibold text-2xl"
+                        >SIG SPORTS</span
+                      >
+                    </a>
+                  </div>
+                  <!-- Primary Navbar items -->
+                  <div
+                    class="hidden text-white-default dropShadow-100 text-xl md:flex items-center space-x-1"
+                  >
+                    <a
+                      href=""
+                      class="py-4 px-2 font-semibold transition duration-300 hover:border-b-4 hover:border-green-500"
+                      >MODALIDADES</a
+                    >
+                    <a
+                      href=""
+                      class="py-4 px-2 font-semibold hover:border-b-4 hover:border-green-500 transition duration-300"
+                      >HORARIOS</a
+                    >
+                    <a
+                      href=""
+                      class="py-4 px-2 font-semibold hover:border-b-4 hover:border-green-500 transition duration-300"
+                      >EQUIPES</a
+                    >
+                  </div>
+                </div>
+                <!-- Secondary Navbar items -->
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                  <button
+                    class="outline-none mobile-menu-button text-green-500 hover:text-green-200"
+                  >
+                    <svg
+                      class="w-6 h-6 text-gray-500"
+                      x-show="!showMenu"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- mobile menu -->
+            <div class="hidden mobile-menu flex transition duration-300">
+              <ul
+                class="absolute top-0 text-xl left-0 w-[80vw] h-screen bg-green-200 text-white-default z-50"
+              >
+                <div class="flex py-4">
+                  <a
+                    href="/"
+                    class="text-white flex items-center space-x-2 px-4"
+                    title="Your App is cool"
+                  >
+                    <img src="/static/assets/mascote.svg" alt="" />
+                    <a href="/"
+                      ><span
+                        class="text-2xl font-extrabold whitespace-nowrap truncate"
+                        >SIG SPORTS</span
+                      ></a
+                    >
+                  </a>
+                </div>
+                <li class="active">
+                  <a
+                    href="index.html"
+                    class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold"
+                    >MODALIDADES</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"
+                    >HORARIOS</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"
+                    >EQUIPES</a
+                  >
+                </li>
+              </ul>
+              <button class="outline-none mobile-menu-button1">
+                <svg
+                  class="w-10 h-10 text-white-default hover:text-green-500 absolute top-4 right-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+          </nav>
+        </div>
+        <div
+          class="flex h-full w-screen tablet:w-full justify-center items-center"
+        >
+          <div class="flex flex-col justify-around lg:p-0">
+            {% if erro %}
+
+            <span
+              class="text-1xl text-red-500 font-semibold font-Montserrat text-center w-full my-4"
+              >{{ erro }}</span
+            >
+
+            {% endif %}
+
+            <div class="w-[321px] mx-auto px-8">
+              <img src="{%static 'assets/SIGSport.svg' %}" alt="" />
+              <input type="hidden" name="next" value="{{ request.GET.next }}" />
+
+              <form method="POST">
+                {% csrf_token %}
+
+                <div class="w-72 lg:w-96 mt-7">
+                  <h1 class="text-xl text-red-500 text-center"></h1>
+                  <div class="flex flex-col w-full">
+                    <label
+                      class="font-medium text-lg font-Montserrat leading-6 text-white-default w-full"
+                      >Email</label
+                    >
+                    <input
+                      placeholder="Insira seu email"
+                      name="email"
+                      type="text"
+                      class="h-14 pl-4 border-2 {% if erro %} border-red-600 {% else %} border-green-200 {% endif %} bg-white-default font-medium text-base plaheholder:font-Montserrat plaheholder:leading-5 text-gray placeholder:text-gray plaheholder:font-medium plaheholder:text-base"
+                    />
+                  </div>
+                  <div class="py-2" x-data="{ show: true }">
+                    <label
+                      class="font-medium text-lg font-Montserrat leading-6 text-white-default w-full"
+                      >Senha</label
+                    >
+                    <div class="relative">
+                      <input
+                        name="password"
+                        placeholder="Insira sua senha"
+                        :type="show ? 'password' : 'text'"
+                        class="h-14 pl-4 border-2 {% if erro %} border-red-600 {% else %} border-green-200 {% endif %} bg-white-default font-medium text-base plaheholder:font-Montserrat plaheholder:leading-5 text-gray placeholder:text-gray plaheholder:font-medium plaheholder:text-base w-full focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+                      />
+                      <div
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 hover:cursor-pointer"
+                      >
+                        <svg
+                          class="h-6 text-grayIcon"
+                          fill="none"
+                          @click="show = !show"
+                          :class="{'hidden': !show, 'block':show }"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewbox="0 0 576 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
+                          ></path>
+                        </svg>
+
+                        <svg
+                          class="h-6 text-grayIcon"
+                          fill="none"
+                          @click="show = !show"
+                          :class="{'block': !show, 'hidden':show }"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewbox="0 0 640 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <a
+                      href="#"
+                      class="font-medium text-base font-Montserrat leading-5 text-green-200 underline"
+                      >Recuperar senha</a
+                    >
+                  </div>
+                  <div class="text-white-default flex justify-end w-full mt-2">
+                    <button
+                      type="submit"
+                      class="w-[144px] h-[57.6px] bg-green-200 rounded-sm font-bold text-base leading-5 font-Montserrat"
+                    >
+                      ENTRAR
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:w-2/4 w-0 flex flex-row-reverse flex-wrap justify-between invisible tablet:visible overflow-hidden"
+      >
+        <img
+          src="{% static 'assets/background.svg' %}"
+          alt=""
+          class="absolute h-full top-0 overflow-hidden"
+        />
+
+        <img
+          src="{% static 'assets/text.svg'%}"
+          alt=""
+          class="absolute h-full"
+        />
+
+        <div
+          class="absolute invisible tablet:visible flex items-center h-full justify-center flex-wrap"
+        >
+          <img src="{% static 'assets/women.svg'%}" alt="" class="h-full" />
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+    <script>
+      const btn = document.querySelector("button.mobile-menu-button");
+      const btn1 = document.querySelector("button.mobile-menu-button1");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+      btn1.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bgGray: "#2D3A3A",
+              green: {
+                100: "#92E6A7",
+                200: "#058C42",
+              },
+              gray: "#A8A7A7",
+              grayIcon: "#AEBBCD",
+              white: { ligth: "#FCFFFC80", default: "#FCFFFC" },
+              dropShadow: {
+                100: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              },
+            },
+            screens: {
+              tablet: "1380px",
+            },
+            fontFamily: {
+              Raleway: ["Raleway", "sans-serif"],
+              Montserrat: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </body>
+</html>
